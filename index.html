@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+<script>
+/* ============================================================
+   ✏️  YOUR PERSONAL CONTENT — EDIT EVERYTHING IN THIS BLOCK
+   All the personal content that appears on the page lives here.
+   You do not need to touch the HTML or CSS below.
+   ============================================================ */
+
+const CONFIG = {
+
+  /* ── YOUR NAME, ROLE & LOCATION ─────────────────────────── */
+  name:     "Alex Morgan",
+  role:     "Senior Data Analyst",
+  location: "London, UK",
+
+  /* ── HERO TAGLINE ────────────────────────────────────────── */
+  // The last word will automatically appear in italic/accent colour.
+  tagline: "Turning data into decisions.",
+
+  /* ── INTRODUCTION (right panel of hero) ─────────────────── */
+  // 3–5 sentences about you. Replaces the old skills bar chart.
+  intro: `I'm a Senior Data Analyst with 8+ years of experience turning
+    complex data into clear, actionable insight. My work spans marketing
+    analytics, statistical modelling, and C-Suite data storytelling — with
+    a particular focus on marketing mix modelling, attribution, and customer
+    lifetime value.
+
+    I thrive at the intersection of rigorous analysis and clear
+    communication, and I enjoy building the kind of data infrastructure
+    that makes great decisions easy. Currently completing an MSc in Applied
+    Data Analytics alongside my day job.`,
+
+  /* ── HERO STATS (3 headline numbers) ────────────────────── */
+  stats: [
+    { num: "8+", label: "Years experience"   },
+    { num: "12", label: "Projects delivered" },
+    { num: "3",  label: "Industries covered" },
+  ],
+
+  /* ── SKILL TAGS (shown as pills in hero panel) ───────────── */
+  skillTags: [
+    "SQL & Snowflake",
+    "Python",
+    "Tableau",
+    "Marketing Mix Modelling",
+    "Attribution Analysis",
+    "Statistical Modelling",
+    "A/B Testing",
+    "Econometrics",
+    "CLV Modelling",
+    "C-Suite Storytelling",
+  ],
+
+  /* ── PROJECTS ────────────────────────────────────────────── */
+  // color:  "green" | "warm" | "blue" | "purple"
+  // impact: one-line result badge. Set to "" to hide.
+  // link:   URL to case study / GitHub repo. Use "#" if not live yet.
+  projects: [
+    {
+      category:    "Marketing Analytics",
+      color:       "green",
+      impact:      "↑ 22% media efficiency",
+      title:       "Marketing Mix Model — Cruise Travel",
+      description: "End-to-end Bayesian MMM in Python using PyMC-Marketing to decompose channel contributions and optimise a £4M media budget across TV, digital, and direct mail.",
+      tags:        ["Python", "PyMC-Marketing", "Ridge Regression", "Budget Optimisation"],
+      link:        "#",
+    },
+    {
+      category:    "Attribution Modelling",
+      color:       "warm",
+      impact:      "↑ £600k reallocated to efficient channels",
+      title:       "Multi-Touch Attribution Pipeline",
+      description: "Full MTA pipeline using Markov chain modelling in Python, replacing last-click attribution with an 11-rule priority-weighted waterfall model built in Snowflake.",
+      tags:        ["Python", "Markov Chains", "Snowflake SQL", "Tableau"],
+      link:        "#",
+    },
+    {
+      category:    "Predictive Modelling",
+      color:       "blue",
+      impact:      "87% classification accuracy",
+      title:       "Loan Approval Prediction Model",
+      description: "Supervised classification model (Random Forest, XGBoost) on 250k records to predict credit approval, including a full fairness audit across demographic segments.",
+      tags:        ["scikit-learn", "XGBoost", "Feature Engineering", "SHAP"],
+      link:        "#",
+    },
+    {
+      category:    "Demand Forecasting",
+      color:       "purple",
+      impact:      "↓ 18% forecast error vs baseline",
+      title:       "Luxury Cruise Demand Forecasting",
+      description: "Time-series demand forecast combining SARIMA, Prophet, and econometric drivers (macro indicators, competitor pricing) to guide inventory and pricing strategy.",
+      tags:        ["Prophet", "SARIMA", "Econometrics", "Python"],
+      link:        "#",
+    },
+    {
+      category:    "CRM Analytics",
+      color:       "green",
+      impact:      "Retention +9 pts",
+      title:       "Customer Lifetime Value Framework",
+      description: "BG/NBD + Gamma-Gamma CLV model to segment the customer base by predicted 24-month value, powering retention spend allocation and first-time buyer targeting.",
+      tags:        ["Lifetimes (Python)", "Segmentation", "CRM", "SQL"],
+      link:        "#",
+    },
+    {
+      category:    "Data Visualisation",
+      color:       "warm",
+      impact:      "C-Suite adopted within 2 weeks",
+      title:       "Executive Marketing Dashboard",
+      description: "Rebuilt a suite of C-Suite Tableau dashboards following SWD principles — reducing 14 charts to 6 high-signal views, cutting weekly reporting time by 3 hours.",
+      tags:        ["Tableau", "Storytelling with Data", "Snowflake"],
+      link:        "#",
+    },
+  ],
+
+  /* ── SKILLS (two columns, dot-rated 1–5) ────────────────── */
+  // style: "green" = default accent | "warm" = terracotta accent
+  skills: {
+    left: {
+      heading: "Technical skills",
+      items: [
+        { name: "SQL / Snowflake",          dots: 5, style: "green" },
+        { name: "Python (pandas, sklearn)",  dots: 4, style: "green" },
+        { name: "Tableau",                  dots: 5, style: "green" },
+        { name: "Statistical Modelling",    dots: 4, style: "green" },
+        { name: "R",                        dots: 3, style: "warm"  },
+        { name: "dbt / data modelling",     dots: 3, style: "warm"  },
+      ],
+    },
+    right: {
+      heading: "Analytical domains",
+      items: [
+        { name: "Marketing Mix Modelling",  dots: 5, style: "green" },
+        { name: "Attribution Modelling",    dots: 5, style: "green" },
+        { name: "CLV & Segmentation",       dots: 4, style: "green" },
+        { name: "A/B Testing",              dots: 4, style: "green" },
+        { name: "C-Suite Storytelling",     dots: 5, style: "warm"  },
+        { name: "Demand Forecasting",       dots: 4, style: "warm"  },
+      ],
+    },
+  },
+
+  /* ── WORK EXPERIENCE ─────────────────────────────────────── */
+  // endDate: use "present" for your current role.
+  // bullets: list of achievements. Remove the array to hide bullets.
+  experience: [
+    {
+      startDate: "2019",
+      endDate:   "present",
+      company:   "Travel Group PLC",
+      title:     "Senior Data Analyst — Marketing & Decision Science",
+      summary:   "Lead analyst within a 12-person analytics function, owning the marketing measurement stack and delivering insight to C-Suite stakeholders.",
+      bullets: [
+        "Built the company's first Bayesian MMM, attributing £40M annual media spend",
+        "Designed Snowflake Bronze/Silver/Gold data architecture for marketing analytics",
+        "Delivered weekly performance packs directly to CMO and CFO",
+      ],
+    },
+    {
+      startDate: "2017",
+      endDate:   "2019",
+      company:   "Retail Analytics Ltd",
+      title:     "Data Analyst",
+      summary:   "Joined a fast-growth analytics consultancy delivering projects across retail and FMCG clients.",
+      bullets: [
+        "Built customer segmentation models using RFM and K-means clustering",
+        "Owned end-to-end reporting automation in SQL + Tableau",
+        "Supported A/B testing programme across 6 retail clients",
+      ],
+    },
+    {
+      startDate: "2015",
+      endDate:   "2017",
+      company:   "InsureTech Co",
+      title:     "Junior Data Analyst",
+      summary:   "First analyst hire at an early-stage insurtech startup, building the data function from scratch.",
+      bullets: [
+        "Developed the company's first SQL reporting layer and data dictionary",
+        "Built pricing analysis models to support underwriting decisions",
+      ],
+    },
+  ],
+
+  /* ── EDUCATION ───────────────────────────────────────────── */
+  education: [
+    {
+      startDate:     "2024",
+      endDate:       "present",
+      institution:   "BPP University",
+      qualification: "MSc Applied Data Analytics (in progress)",
+      detail:        "Part-time postgraduate study covering machine learning, Bayesian inference, NLP, and data engineering.",
+    },
+    {
+      startDate:     "2012",
+      endDate:       "2015",
+      institution:   "University of Exeter",
+      qualification: "BSc Mathematics & Statistics — 2:1",
+      detail:        "Core modules in statistical inference, linear modelling, probability theory, and computational mathematics.",
+    },
+  ],
+
+  /* ── CONTACT & LINKS ─────────────────────────────────────── */
+  // ✅ All formats work — with or without https://
+  // ✅ Set any value to "" to hide that link entirely.
+  contact: {
+    email:    "alex.morgan@email.com",          // just the email address
+    linkedin: "linkedin.com/in/alexmorgan",     // with or without https://
+    github:   "github.com/alexmorgan-data",     // with or without https://
+    notion:   "notion.so/alexmorgandata",        // with or without https:// — or "" to hide
+    cv:       "#",                               // full URL or file path to your CV PDF — or "" to hide
+  },
+
+};
+
+/* ============================================================
+   END OF YOUR CONTENT
+   ════════════════════════════════════════════════════════════
+   Everything below is the template engine. You don't need to
+   edit anything below this line to update your portfolio.
+   ============================================================ */
+</script>
+
+<style>
+  :root {
+    --ink:       #18180f;
+    --ink-mid:   #46463c;
+    --ink-soft:  #8a8a7c;
+    --cream:     #f6f4ee;
+    --cream-dk:  #ece9e0;
+    --white:     #ffffff;
+    --green:     #2a5c3f;
+    --green-lt:  #e5ede8;
+    --warm:      #b86b35;
+    --warm-lt:   #f5ece0;
+    --blue:      #2d5594;
+    --blue-lt:   #e4ebf5;
+    --purple:    #5e4096;
+    --purple-lt: #ede8f5;
+    --border:    rgba(24,24,15,0.11);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans:  'DM Sans', system-ui, sans-serif;
+    --r: 6px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans); background: var(--cream); color: var(--ink);
+    font-size: 15px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(246,244,238,0.93); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 clamp(1.5rem,5vw,4rem); height: 56px;
+  }
+  #nav-name { font-family: var(--serif); font-size: 17px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+  .nav-links a {
+    font-size: 12px; font-weight: 500; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+  #nav-cv {
+    font-size: 12px; font-weight: 500; padding: 7px 17px;
+    background: var(--ink); color: var(--cream);
+    border: none; border-radius: var(--r); text-decoration: none;
+    transition: background .2s; display: none;
+  }
+  #nav-cv.show { display: inline-flex; align-items: center; gap: 6px; }
+  #nav-cv:hover { background: var(--green); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 56px;
+    display: grid; grid-template-columns: 55% 45%;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(3rem,7vw,5.5rem) 2.5rem clamp(3rem,7vw,5.5rem) clamp(2rem,4vw,4rem);
+  }
+  .eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--green); margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before { content:''; width:24px; height:2px; background:var(--green); flex-shrink:0; }
+  .hero-h1 {
+    font-family: var(--serif); font-size: clamp(3rem,5.5vw,4.6rem);
+    line-height: 1.05; letter-spacing: -.025em; color: var(--ink); margin-bottom: 1.4rem;
+  }
+  .hero-h1 em { font-style: italic; color: var(--warm); }
+  .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2.75rem; }
+  .btn-p {
+    padding: 11px 26px; background: var(--ink); color: var(--cream);
+    font-family: var(--sans); font-size: 13px; font-weight: 500;
+    border: none; border-radius: var(--r); cursor: pointer; text-decoration: none;
+    transition: background .2s, transform .15s; display: inline-flex; align-items: center; gap: 7px;
+  }
+  .btn-p:hover { background: var(--green); transform: translateY(-1px); }
+  .btn-o {
+    padding: 11px 26px; background: transparent; color: var(--ink);
+    font-family: var(--sans); font-size: 13px; font-weight: 500;
+    border: 1.5px solid var(--border); border-radius: var(--r);
+    cursor: pointer; text-decoration: none;
+    transition: border-color .2s, transform .15s; display: inline-flex; align-items: center; gap: 7px;
+  }
+  .btn-o:hover { border-color: var(--ink-mid); transform: translateY(-1px); }
+  .hero-stats {
+    display: flex; gap: 2.5rem;
+    border-top: 1px solid var(--border); padding-top: 2rem;
+  }
+  .stat-n { font-family: var(--serif); font-size: 1.9rem; color: var(--ink); line-height: 1; }
+  .stat-l { font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+
+  /* HERO RIGHT */
+  .hero-right {
+    background: var(--cream-dk); border-left: 1px solid var(--border);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(2.5rem,5vw,4rem); gap: 1.75rem;
+  }
+  .intro-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.65rem;
+  }
+  .intro-lbl {
+    font-size: 10px; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--green); margin-bottom: 1rem;
+  }
+  #intro-p { font-size: 14px; color: var(--ink-mid); line-height: 1.82; white-space: pre-line; }
+  .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+  .s-tag {
+    padding: 6px 14px; border-radius: 100px;
+    font-size: 12px; font-weight: 500;
+    background: var(--green-lt); color: var(--green);
+  }
+  .s-tag:nth-child(3n+2) { background: var(--warm-lt);  color: var(--warm); }
+  .s-tag:nth-child(5n+4) { background: var(--cream-dk); color: var(--ink-mid); }
+
+  /* SECTION CHROME */
+  section { padding: clamp(4rem,7vw,6.5rem) clamp(1.5rem,5vw,4rem); }
+  .sec-eyebrow {
+    font-size: 10px; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--green); margin-bottom: .7rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .sec-eyebrow::before { content:''; width:18px; height:1.5px; background:var(--green); flex-shrink:0; }
+  .sec-h2 {
+    font-family: var(--serif); font-size: clamp(1.9rem,3.5vw,2.6rem);
+    line-height: 1.1; letter-spacing: -.02em;
+    color: var(--ink); margin-bottom: 2.75rem; max-width: 540px;
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--white); }
+  .proj-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+    border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  }
+  .p-card {
+    padding: 1.75rem; background: var(--white);
+    border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    cursor: pointer; transition: background .18s;
+    display: flex; flex-direction: column; text-decoration: none; color: inherit;
+  }
+  .p-card:hover { background: var(--cream); }
+  .p-cat {
+    font-size: 10px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; margin-bottom: .9rem;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .cat-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .c-green  { color: var(--green); }  .dot-green  { background: var(--green); }
+  .c-warm   { color: var(--warm); }   .dot-warm   { background: var(--warm); }
+  .c-blue   { color: var(--blue); }   .dot-blue   { background: var(--blue); }
+  .c-purple { color: var(--purple); } .dot-purple { background: var(--purple); }
+  .p-impact {
+    display: inline-flex; font-size: 11px; font-weight: 600;
+    color: var(--green); background: var(--green-lt);
+    padding: 3px 9px; border-radius: 3px; margin-bottom: .9rem; align-self: flex-start;
+  }
+  .p-title { font-family: var(--serif); font-size: 1.25rem; line-height: 1.2; margin-bottom: .65rem; color: var(--ink); }
+  .p-desc  { font-size: 13px; color: var(--ink-mid); line-height: 1.72; flex: 1; margin-bottom: 1.25rem; }
+  .p-tags  { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 1.1rem; }
+  .p-tag   { font-size: 11px; padding: 2px 9px; background: var(--cream-dk); color: var(--ink-mid); border-radius: 3px; font-weight: 500; }
+  .p-arrow { font-size: 17px; color: var(--ink-soft); transition: transform .2s, color .2s; align-self: flex-start; }
+  .p-card:hover .p-arrow { transform: translate(4px,-4px); color: var(--green); }
+
+  /* SKILLS */
+  #skills { background: var(--cream); }
+  .sk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .sk-col h3 { font-family: var(--serif); font-size: 1.15rem; margin-bottom: 1.4rem; color: var(--ink); }
+  .sk-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+  }
+  .sk-name { font-size: 13px; font-weight: 500; }
+  .sk-dots { display: flex; gap: 5px; }
+  .d { width: 9px; height: 9px; border-radius: 50%; background: var(--cream-dk); border: 1.5px solid var(--border); }
+  .d.g { background: var(--green);  border-color: var(--green); }
+  .d.w { background: var(--warm);   border-color: var(--warm); }
+
+  /* EXPERIENCE */
+  #experience { background: var(--white); }
+  .tl { display: flex; flex-direction: column; }
+  .tl-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 2rem; padding-bottom: 2.5rem; position: relative;
+  }
+  .tl-item::before {
+    content:''; position:absolute; left:196px; top:7px;
+    width:9px; height:9px; border-radius:50%;
+    background:var(--white); border:2px solid var(--green); z-index:1;
+  }
+  .tl-item::after {
+    content:''; position:absolute; left:200px; top:16px; bottom:0;
+    width:1px; background:var(--border);
+  }
+  .tl-item:last-child::after { display:none; }
+  .tl-meta { text-align:right; padding-right:1.5rem; padding-top:2px; }
+  .tl-date { font-size:12px; color:var(--ink-soft); font-weight:500; }
+  .tl-co   { font-size:12px; font-weight:600; color:var(--ink-mid); margin-top:3px; }
+  .tl-body { padding-left:1.75rem; }
+  .tl-title { font-family:var(--serif); font-size:1.1rem; color:var(--ink); margin-bottom:.5rem; }
+  .tl-sum  { font-size:13px; color:var(--ink-mid); line-height:1.72; }
+  .tl-bul  { list-style:none; margin-top:.6rem; }
+  .tl-bul li {
+    font-size:13px; color:var(--ink-mid);
+    padding:3px 0 3px 16px; position:relative; line-height:1.6;
+  }
+  .tl-bul li::before { content:'—'; position:absolute; left:0; color:var(--green); font-weight:700; }
+
+  /* EDUCATION */
+  .edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-top:3rem; }
+  .edu-h   { font-family:var(--serif); font-size:1.1rem; color:var(--ink); margin-bottom:1.1rem; }
+  .edu-card { background:var(--cream); border:1px solid var(--border); border-radius:8px; padding:1.25rem 1.5rem; }
+  .edu-dates { font-size:11px; color:var(--ink-soft); margin-bottom:5px; }
+  .edu-inst  { font-size:11px; font-weight:600; color:var(--green); text-transform:uppercase; letter-spacing:.05em; margin-bottom:5px; }
+  .edu-qual  { font-family:var(--serif); font-size:1rem; color:var(--ink); line-height:1.25; margin-bottom:.45rem; }
+  .edu-det   { font-size:12px; color:var(--ink-mid); line-height:1.65; }
+
+  /* CONTACT */
+  #contact { background: var(--ink); color: var(--cream); }
+  #contact .sec-eyebrow { color:rgba(246,244,238,.45); }
+  #contact .sec-eyebrow::before { background:rgba(246,244,238,.45); }
+  #contact .sec-h2 { color:var(--cream); }
+  .contact-wrap { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:3rem; }
+  .c-links { display:flex; flex-direction:column; gap:12px; }
+  .c-link {
+    display:flex; align-items:center; gap:14px;
+    color:var(--cream); text-decoration:none;
+    padding:.9rem 1.1rem; border:1px solid rgba(246,244,238,.14);
+    border-radius:8px; transition:border-color .2s, background .2s;
+  }
+  .c-link:hover { border-color:rgba(246,244,238,.38); background:rgba(246,244,238,.05); }
+  .c-icon {
+    width:36px; height:36px; border-radius:6px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(246,244,238,.1); font-size:14px; flex-shrink:0;
+  }
+  .c-txt  { flex:1; }
+  .c-lbl  { font-size:10px; color:rgba(246,244,238,.4); text-transform:uppercase; letter-spacing:.06em; }
+  .c-val  { font-size:13px; font-weight:500; margin-top:2px; }
+  .c-arr  { color:rgba(246,244,238,.3); }
+  .c-form { display:flex; flex-direction:column; gap:12px; }
+  .f-row  { display:flex; gap:10px; }
+  .f-grp  { flex:1; display:flex; flex-direction:column; gap:5px; }
+  .f-grp label { font-size:10px; color:rgba(246,244,238,.45); text-transform:uppercase; letter-spacing:.06em; }
+  .f-grp input, .f-grp textarea {
+    background:rgba(246,244,238,.07); border:1px solid rgba(246,244,238,.16);
+    border-radius:var(--r); color:var(--cream); font-family:var(--sans);
+    font-size:13px; padding:9px 13px; outline:none; transition:border-color .2s; resize:none;
+  }
+  .f-grp input::placeholder, .f-grp textarea::placeholder { color:rgba(246,244,238,.25); }
+  .f-grp input:focus, .f-grp textarea:focus { border-color:rgba(246,244,238,.45); }
+  .btn-send {
+    padding:12px 28px; background:var(--cream); color:var(--ink);
+    font-family:var(--sans); font-size:13px; font-weight:600;
+    border:none; border-radius:var(--r); cursor:pointer;
+    transition:background .2s; align-self:flex-start;
+  }
+  .btn-send:hover { background:var(--green-lt); }
+
+  footer {
+    background:var(--ink); color:rgba(246,244,238,.3);
+    border-top:1px solid rgba(246,244,238,.08);
+    padding:1.4rem clamp(1.5rem,5vw,4rem);
+    display:flex; justify-content:space-between; align-items:center; font-size:11px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 860px) {
+    .hero { grid-template-columns:1fr; min-height:auto; }
+    .hero-right { display:none; }
+    .hero-left { padding:3.5rem 1.5rem 3rem; }
+    .sk-grid { grid-template-columns:1fr; }
+    .contact-wrap { grid-template-columns:1fr; }
+    .tl-item { grid-template-columns:1fr; gap:.25rem; }
+    .tl-item::before, .tl-item::after { display:none; }
+    .tl-meta { text-align:left; padding-right:0; }
+    .tl-body { padding-left:0; }
+    .edu-grid { grid-template-columns:1fr; }
+    .nav-links, #nav-cv { display:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" id="nav-name"></a>
+  <ul class="nav-links">
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#" id="nav-cv">Download CV ↓</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="eyebrow" id="h-role"></p>
+    <h1 class="hero-h1" id="h-tagline"></h1>
+    <div class="hero-btns" id="h-btns"></div>
+    <div class="hero-stats" id="h-stats"></div>
+  </div>
+  <div class="hero-right">
+    <div class="intro-card">
+      <div class="intro-lbl">About me</div>
+      <p id="intro-p"></p>
+    </div>
+    <div class="tag-cloud" id="tag-cloud"></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="sec-eyebrow">Selected work</p>
+  <h2 class="sec-h2">Projects that made a difference</h2>
+  <div class="proj-grid" id="proj-grid"></div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="sec-eyebrow">Capabilities</p>
+  <h2 class="sec-h2">Tools, techniques &amp; domains</h2>
+  <div class="sk-grid" id="sk-grid"></div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="sec-eyebrow">Career history</p>
+  <h2 class="sec-h2">Where I've built my craft</h2>
+  <div class="tl" id="tl"></div>
+  <p class="edu-h" style="margin-top:3rem">Education</p>
+  <div class="edu-grid" id="edu-grid"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="sec-eyebrow">Get in touch</p>
+  <h2 class="sec-h2">Let's build something together</h2>
+  <div class="contact-wrap">
+    <div class="c-links" id="c-links"></div>
+    <form class="c-form" onsubmit="return false;">
+      <div class="f-row">
+        <div class="f-grp"><label>Name</label><input type="text" placeholder="Your name"></div>
+        <div class="f-grp"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+      </div>
+      <div class="f-grp"><label>Subject</label><input type="text" placeholder="e.g. Freelance enquiry, job opportunity…"></div>
+      <div class="f-grp"><label>Message</label><textarea rows="5" placeholder="Tell me about the project or opportunity…"></textarea></div>
+      <button class="btn-send" type="submit">Send message →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span id="footer-copy"></span>
+  <span>Data Portfolio</span>
+</footer>
+
+<!-- RENDER ENGINE -->
+<script>
+const C = CONFIG;
+
+/* Page title */
+document.title = C.name + " — Data Portfolio";
+
+/* Nav */
+document.getElementById("nav-name").textContent = C.name;
+const cvVal = C.contact.cv;
+if (cvVal && cvVal.trim() !== "" && cvVal !== "#") {
+  const el = document.getElementById("nav-cv");
+  el.href = cvVal;
+  el.setAttribute("target", "_blank");
+  el.setAttribute("rel", "noopener noreferrer");
+  el.classList.add("show");
+}
+
+/* Hero: role + location */
+document.getElementById("h-role").textContent =
+  C.role + (C.location ? " · " + C.location : "");
+
+/* Hero: tagline — last word in italic */
+(function(){
+  const words = C.tagline.replace(/\.$/, "").trim().split(" ");
+  const last = words.pop();
+  document.getElementById("h-tagline").innerHTML =
+    (words.length ? words.join(" ") + " " : "") + "<em>" + last + ".</em>";
+})();
+
+/* Hero: buttons */
+let btns = `<a href="#projects" class="btn-p">View my work →</a>`;
+if (cvVal && cvVal.trim() !== "" && cvVal !== "#")
+  btns += `<a href="${cvVal}" class="btn-o" target="_blank" rel="noopener noreferrer">Download CV</a>`;
+document.getElementById("h-btns").innerHTML = btns;
+
+/* Hero: stats */
+document.getElementById("h-stats").innerHTML =
+  C.stats.map(s =>
+    `<div><div class="stat-n">${s.num}</div><div class="stat-l">${s.label}</div></div>`
+  ).join("");
+
+/* Hero: intro text */
+document.getElementById("intro-p").textContent =
+  C.intro.trim().replace(/[ \t]+/g, " ").replace(/\n[ \t]*/g, "\n");
+
+/* Hero: skill tags */
+document.getElementById("tag-cloud").innerHTML =
+  C.skillTags.map(t => `<span class="s-tag">${t}</span>`).join("");
+
+/* Projects */
+function safeProjectHref(raw) {
+  if (!raw || raw === "#") return "#";
+  if (raw.startsWith("http://") || raw.startsWith("https://")) return raw;
+  return "https://" + raw;
+}
+document.getElementById("proj-grid").innerHTML = C.projects.map(p => {
+  const c = p.color || "green";
+  const href = safeProjectHref(p.link);
+  const isLive = href !== "#";
+  return `<a class="p-card" href="${href}"${isLive ? ' target="_blank" rel="noopener noreferrer"' : ''}>
+    <div class="p-cat c-${c}"><span class="cat-dot dot-${c}"></span>${p.category}</div>
+    ${p.impact ? `<span class="p-impact">${p.impact}</span>` : ""}
+    <h3 class="p-title">${p.title}</h3>
+    <p class="p-desc">${p.description}</p>
+    <div class="p-tags">${p.tags.map(t => `<span class="p-tag">${t}</span>`).join("")}</div>
+    <span class="p-arrow">${isLive ? "↗" : "·"}</span>
+  </a>`;
+}).join("");
+
+/* Skills */
+function renderSkillCol(col) {
+  return `<div class="sk-col">
+    <h3>${col.heading}</h3>
+    ${col.items.map(sk => {
+      const dots = Array.from({length:5}, (_,i) =>
+        `<span class="d${i < sk.dots ? (sk.style==="warm" ? " w" : " g") : ""}"></span>`
+      ).join("");
+      return `<div class="sk-row">
+        <span class="sk-name">${sk.name}</span>
+        <div class="sk-dots">${dots}</div>
+      </div>`;
+    }).join("")}
+  </div>`;
+}
+document.getElementById("sk-grid").innerHTML =
+  renderSkillCol(C.skills.left) + renderSkillCol(C.skills.right);
+
+/* Experience */
+document.getElementById("tl").innerHTML = C.experience.map(e =>
+  `<div class="tl-item">
+    <div class="tl-meta">
+      <div class="tl-date">${e.startDate} — ${e.endDate}</div>
+      <div class="tl-co">${e.company}</div>
+    </div>
+    <div class="tl-body">
+      <div class="tl-title">${e.title}</div>
+      <p class="tl-sum">${e.summary}</p>
+      ${e.bullets && e.bullets.length
+        ? `<ul class="tl-bul">${e.bullets.map(b=>`<li>${b}</li>`).join("")}</ul>`
+        : ""}
+    </div>
+  </div>`
+).join("");
+
+/* Education */
+document.getElementById("edu-grid").innerHTML = C.education.map(e =>
+  `<div class="edu-card">
+    <div class="edu-dates">${e.startDate} — ${e.endDate}</div>
+    <div class="edu-inst">${e.institution}</div>
+    <div class="edu-qual">${e.qualification}</div>
+    <div class="edu-det">${e.detail}</div>
+  </div>`
+).join("");
+
+/* Contact links */
+const lnk = C.contact;
+
+// Safely build a full URL — handles already-prefixed values, bare domains, and mailto
+function makeHref(key, val) {
+  if (!val) return "";
+  if (key === "email") return "mailto:" + val;
+  if (val.startsWith("http://") || val.startsWith("https://")) return val;
+  return "https://" + val;
+}
+
+const defs = [
+  { key:"email",    icon:"✉",  label:"Email",     val:lnk.email    },
+  { key:"linkedin", icon:"in", label:"LinkedIn",  val:lnk.linkedin },
+  { key:"github",   icon:"⌥",  label:"GitHub",    val:lnk.github   },
+  { key:"notion",   icon:"◈",  label:"Portfolio", val:lnk.notion   },
+];
+document.getElementById("c-links").innerHTML = defs
+  .filter(d => d.val && d.val.trim() !== "")
+  .map(d => {
+    const href = makeHref(d.key, d.val);
+    const isExternal = d.key !== "email";
+    return `<a href="${href}" class="c-link"${isExternal ? ' target="_blank" rel="noopener noreferrer"' : ""}>
+      <div class="c-icon">${d.icon}</div>
+      <div class="c-txt"><div class="c-lbl">${d.label}</div><div class="c-val">${d.val}</div></div>
+      <div class="c-arr">↗</div>
+    </a>`;
+  }).join("");
+
+/* Footer */
+document.getElementById("footer-copy").textContent =
+  "© " + new Date().getFullYear() + " " + C.name;
+</script>
+</body>
+</html>
